@@ -7,7 +7,7 @@ use yew::{function_component, html};
 
 use crate::components::chessboard::Chessboard;
 use crate::components::game_status_board::GameStatusBoard;
-use crate::components::score_board::ScoreBoard;
+use crate::components::inventory::Inventory;
 use crate::constant::Status;
 use crate::state::{Action, State};
 
@@ -65,9 +65,16 @@ pub fn App() -> Html {
         })
     };
 
+    let dupe_on_flip = {
+        let state = state.clone();
+        Callback::from(move |card| {
+            state.dispatch(Action::FlipCard(card));
+        })
+    };
+
     html! {
         <div class="game-panel">
-            <ScoreBoard unresolved_card_pairs={state.unresolved_card_pairs} best_score={state.best_score} />
+            <Inventory cards={state.cards.clone()} {dupe_on_flip} />
             <Chessboard cards={state.cards.clone()} {on_flip} />
             <GameStatusBoard sec_past={sec_past_time} status={state.status} {on_reset}/>
         </div>

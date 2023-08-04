@@ -12,7 +12,7 @@ pub struct Props {
 }
 
 #[function_component]
-pub fn ChessboardCard(props: &Props) -> Html {
+pub fn Gobblet(props: &Props) -> Html {
     let Props { card, on_flip } = props.clone();
     let Card { flipped, name, id } = card;
 

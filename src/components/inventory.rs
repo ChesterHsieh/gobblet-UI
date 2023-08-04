@@ -7,15 +7,16 @@ use crate::state::{Card, RawCard};
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     pub cards: Vec<Card>,
-    pub on_flip: Callback<RawCard>,
+    pub dupe_on_flip: Callback<RawCard>,
 }
+
 #[function_component]
-pub fn Chessboard(props: &Props) -> Html {
+pub fn Inventory(props: &Props) -> Html {
     html! {
-        <div class="chess-board">
-        { for props.cards[..9].iter().map(|card|
+        <div class="inventory">
+        { for props.cards[..3].iter().map(|card|
             html! {
-                <Gobblet card={card.clone()} on_flip={&props.on_flip} />
+                <Gobblet card={card.clone()} on_flip={&props.dupe_on_flip} />
             }
         ) }
         </div>
