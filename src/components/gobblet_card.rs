@@ -15,17 +15,14 @@ pub struct Props {
 pub fn Gobblet(props: &Props) -> Html {
     let Props { card, on_flip } = props.clone();
     let Card { flipped, name, id } = card;
-
     let get_link_by_cardname = {
         match name {
-            CardName::EightBall => "public/8-ball.png",
-            CardName::Kronos => "public/kronos.png",
-            CardName::BakedPotato => "public/baked-potato.png",
-            CardName::Dinosaur => "public/dinosaur.png",
-            CardName::Rocket => "public/rocket.png",
-            CardName::SkinnyUnicorn => "public/skinny-unicorn.png",
-            CardName::ThatGuy => "public/that-guy.png",
-            CardName::Zeppelin => "public/zeppelin.png",
+            CardName::RED_LARGE => "public/red-large.jpg",
+            CardName::RED_MEDIUM => "public/red-medium.jpg",
+            CardName::RED_TINY => "public/red-tiny.jpg",
+            CardName::BLUE_TINY => "public/blue-tiny.jpg",
+            CardName::BLUE_MEDIUM => "public/blue-medium.jpg",
+            CardName::BLUE_LARGE => "public/blue-large.jpg",
         }
         .to_string()
     };

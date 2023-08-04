@@ -19,7 +19,6 @@ body {
 }
 
 .game-panel {
-  //width: 50%;
   height: 670px;
   border: 4px solid #bdbdbd;
   border-radius: 2px;
@@ -37,8 +36,6 @@ body {
   }
 }
 
-@import 'score_board';
-@import 'score_board_best_score';
 @import 'game_progress';
 @import 'chess_board';
 @import 'chess_board_card';
