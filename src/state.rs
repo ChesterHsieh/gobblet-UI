@@ -4,7 +4,7 @@ use gloo::storage::{LocalStorage, Storage};
 use serde::{Deserialize, Serialize};
 use yew::prelude::*;
 
-use crate::constant::{CardName, Status, KEY_BEST_SCORE};
+use crate::constant::{CardName, Status, KEY_BEST_SCORE, CardColor, Size};
 use crate::helper::shuffle_cards;
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
@@ -16,8 +16,9 @@ pub struct RawCard {
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Card {
     pub id: String,
-    pub flipped: bool,
     pub name: CardName,
+    pub color: CardColor,
+    pub size : Size,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]

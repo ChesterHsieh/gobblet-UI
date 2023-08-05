@@ -1,8 +1,7 @@
 use web_sys::MouseEvent;
+use yew::Properties;
 use yew::prelude::*;
-use yew::{function_component, html, Html, Properties};
 
-use crate::constant::CardName;
 use crate::state::{Card, RawCard};
 
 #[derive(Properties, Clone, PartialEq)]
@@ -14,7 +13,7 @@ pub struct Props {
 #[function_component]
 pub fn Gobblet(props: &Props) -> Html {
     let Props { card, on_flip } = props.clone();
-    let Card { flipped, name, id } = card;
+    let Card {name, id } = card;
     let get_link_by_cardname = {
         match name {
             CardName::RED_LARGE => "public/red-large.jpg",
@@ -27,15 +26,15 @@ pub fn Gobblet(props: &Props) -> Html {
         .to_string()
     };
 
-    let onclick = move |e: MouseEvent| {
-        e.stop_propagation();
-        (!flipped).then(|| {
-            on_flip.emit(RawCard {
-                id: id.clone(),
-                name,
-            })
-        });
-    };
+    // let onclick = move |e: MouseEvent| {
+    //     e.stop_propagation();
+    //     (!flipped).then(|| {
+    //         on_flip.emit(RawCard {
+    //             id: id.clone(),
+    //             name,
+    //         })
+    //     });
+    // };
 
     html! {
       <div class="chess-board-card-container">

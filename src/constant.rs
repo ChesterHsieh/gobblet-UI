@@ -1,3 +1,4 @@
+use std::ops::Not;
 use serde::{Deserialize, Serialize};
 use strum_macros::{Display, EnumIter};
 
@@ -36,3 +37,26 @@ pub const RAW_CARDS: [CardName; 12] = [
 ];
 
 
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub enum CardColor {
+    RED,
+    GREEN,
+}
+impl Not for CardColor {
+    type Output = Self;
+    fn not(self) -> Self::Output {
+        match self {
+            CardColor::RED => CardColor::GREEN,
+            CardColor::GREEN => CardColor::RED,
+        }
+    }
+}
+
+#[repr(usize)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, IntEnum, PartialOrd)]
+pub enum Size {
+    BIG = 2,
+    MID = 1,
+    SMALL = 0,
+}
